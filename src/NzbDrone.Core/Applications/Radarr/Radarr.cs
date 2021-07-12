@@ -83,6 +83,8 @@ namespace NzbDrone.Core.Applications.Radarr
         {
             if (indexer.Capabilities.Categories.SupportedCategories(Settings.SyncCategories.ToArray()).Any())
             {
+                
+                //TODO: App Profiles check and pass application profiles through (for all apps)
                 var radarrIndexer = BuildRadarrIndexer(indexer, indexer.Protocol);
 
                 var remoteIndexer = _radarrV3Proxy.AddIndexer(radarrIndexer, Settings);
@@ -95,6 +97,8 @@ namespace NzbDrone.Core.Applications.Radarr
             var appMappings = _appIndexerMapService.GetMappingsForApp(Definition.Id);
 
             var indexerMapping = appMappings.FirstOrDefault(m => m.IndexerId == indexerId);
+
+            //TODO: Check for application not being inside of appProfile (for all apps)
 
             if (indexerMapping != null)
             {
@@ -110,6 +114,8 @@ namespace NzbDrone.Core.Applications.Radarr
 
             var appMappings = _appIndexerMapService.GetMappingsForApp(Definition.Id);
             var indexerMapping = appMappings.FirstOrDefault(m => m.IndexerId == indexer.Id);
+
+            //TODO: App Profiles check and pass application profiles through (for all apps)
 
             var radarrIndexer = BuildRadarrIndexer(indexer, indexer.Protocol, indexerMapping?.RemoteIndexerId ?? 0);
 

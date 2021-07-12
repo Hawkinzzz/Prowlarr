@@ -87,7 +87,7 @@ class EditAppProfileModalContent extends Component {
                     <FormLabel>
                       {translate('Applications')}
                     </FormLabel>
-
+                    // TODO: Why is this not rendering as multi select (remove comment to make build / run)
                     <FormInputGroup
                       type={inputTypes.APPLICATION_SELECT}
                       name="applicationIds"
